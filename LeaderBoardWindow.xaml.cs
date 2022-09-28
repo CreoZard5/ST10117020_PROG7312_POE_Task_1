@@ -34,14 +34,14 @@ namespace PROG7312_POE_ST10117020
 
         public void DisplayLeaderboard()
         {
-            List<LeaderboardItem> leaderboardItems = CONTEXT.LeaderboardItems.OrderByDescending(x => x.LeaderboardScore).ToList();
-            LstAnswer.Items.Add("Rank\tGame\t\tUsername\t\t\tScore");
+            List<LeaderboardItem> leaderboardItems = CONTEXT.LeaderboardItems.OrderByDescending(x => x.LeaderboardScore).ToList(); //odering the Leaderboard items and adding them to a temp list 
+            LstAnswer.Items.Add("Rank\tGame\t\tUsername\t\t\tScore");//adding a "header" to the list box 
             int counter = 0;
-            foreach (LeaderboardItem item in leaderboardItems)
+            foreach (LeaderboardItem item in leaderboardItems) //looping through the list and populating the list box 
             {
-                if (item.LeaderboardGameType.Equals("Ordering"))
+                if (item.LeaderboardGameType.Equals("Ordering"))//specifying the Game to Ordering for now 
                 {
-                    string user = CONTEXT.Users.Where(x => x.UserId.Equals(item.UserId)).FirstOrDefault().UserUsername.ToString();
+                    string user = CONTEXT.Users.Where(x => x.UserId.Equals(item.UserId)).FirstOrDefault().UserUsername.ToString();//getting the User's username 
                     if (user.Length >12)
                     {
                         LstAnswer.Items.Add((counter + 1) + "\t" + item.LeaderboardGameType + "\t" + user + "\t\t" + item.LeaderboardScore);

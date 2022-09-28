@@ -33,7 +33,7 @@ namespace PROG7312_POE_ST10117020.Utility
         }
 
         public static bool Checker(string ID)
-        {
+        {//a method to check if the user ID i exists 
             PROG_ST10117020Context context = new PROG_ST10117020Context();
             bool result = true;
 
@@ -49,7 +49,7 @@ namespace PROG7312_POE_ST10117020.Utility
         }
 
         public static bool CheckerLeaderboard(string ID)
-        {
+        {//a method to check is the Leaderboard ID exists 
             PROG_ST10117020Context context = new PROG_ST10117020Context();
             bool result = true;
 
@@ -65,7 +65,7 @@ namespace PROG7312_POE_ST10117020.Utility
         }
 
         public static string GetID()
-        {
+        {//generate a user ID 
             string ID;
             int extra = 1;
             string temp = "";
@@ -105,6 +105,7 @@ namespace PROG7312_POE_ST10117020.Utility
 
         public static string GetLeaderBoardID()
         {
+            //generate a Leaderboard ID 
             string ID;
             int extra = 1;
             string temp = "";

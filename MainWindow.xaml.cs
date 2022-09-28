@@ -57,21 +57,24 @@ namespace PROG7312_POE_ST10117020
 
         private void BtnLoginReg_Click(object sender, RoutedEventArgs e)
         {
+            //making only the Register Groupbox visible 
             GrpLogin.Visibility = Visibility.Hidden;
             GrpReg.Visibility = Visibility.Visible;
         }
 
         private void BtnRegLogin_Click(object sender, RoutedEventArgs e)
         {
+            //making only the Login Groupbox visible 
             GrpReg.Visibility = Visibility.Hidden;
             GrpLogin.Visibility = Visibility.Visible;
         }
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            //creating variables
             string UserName, UserEmail, UserPassword;
 
+            //populating variables 
             UserName = TxbRegName.Text;
             UserEmail = TxbRegEmail.Text;
             UserPassword = TxbRegPassword.Text;
@@ -80,7 +83,7 @@ namespace PROG7312_POE_ST10117020
 
             //checking and getting error message if aplicable 
             string ValidationStr = ValidationHandeler.CheckUser(UserName, UserEmail, UserPassword);
-            List<User> u = CONTEXT.Users.ToList();
+
             try
             {
                 if (ValidationStr.Length == 0)
@@ -90,8 +93,8 @@ namespace PROG7312_POE_ST10117020
                     User U = new User(ValidationHandeler.GetID(), UserName, UserEmail, temp);
 
 
-                    CONTEXT.Users.Add(U);
-                    CONTEXT.SaveChanges();
+                    CONTEXT.Users.Add(U);//adding  the user that registered to the database
+                    CONTEXT.SaveChangesAsync();
                     CurrentUser.U = U;
                     HubWindow HW = new HubWindow();
                     this.Hide();

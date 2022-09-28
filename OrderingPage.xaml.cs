@@ -24,12 +24,12 @@ namespace PROG7312_POE_ST10117020
     /// </summary>
     public partial class OrderingPage : Window
     {
-        public static Random rnd = new Random();
-        private List<Dewey> deweys = new List<Dewey>();
-        private List<string> StringRandomList = new List<string>();
-        private ObservableCollection<string> StringObvRandomList = new ObservableCollection<string>();
-        private List<string> StringSorted = new List<string>();
-        public DispatcherTimer dispatcherTimer = new DispatcherTimer();
+        public static Random rnd = new Random();// An object call from the random class to use throughout 
+        private List<Dewey> deweys = new List<Dewey>();//A list of Dewey objects
+        private List<string> StringRandomList = new List<string>();//A list of strings that have the same data as above to use for display 
+        private ObservableCollection<string> StringObvRandomList = new ObservableCollection<string>();//An Observable list of strings that will be minipulted by the user 
+        private List<string> StringSorted = new List<string>();//A sorted lst of strings that is used for camparison 
+        public DispatcherTimer dispatcherTimer = new DispatcherTimer();//the timer
         public int Points;
         private DateTime startTime ;
         private DateTime endTime ;
@@ -335,9 +335,11 @@ namespace PROG7312_POE_ST10117020
         }
         private double RandomNumber()
         {
+            //Calling the random class the 3 digits before the point 
             double rand = rnd.Next(0, 1000);
+            //Calling the random class the 2 digits after the point 
             double rand2 = rnd.Next(0, 100);
-
+            //adding the number to form a complete double 
             double randomNumber = rand + (rand2 / 100);
 
             return randomNumber;
@@ -357,11 +359,11 @@ namespace PROG7312_POE_ST10117020
         }
         public List<Dewey> SortArray(List<Dewey> list)
         {
-            List<Dewey> SortedList = list.OrderBy(o => o.Letters).OrderBy(o => o.Number).ToList();
+            List<Dewey> SortedList = list.OrderBy(o => o.Letters).OrderBy(o => o.Number).ToList();//sorting the Lists 
             StringSorted.Clear();
             foreach (Dewey item in SortedList)
             {
-                StringSorted.Add(item.Number.ToString("000.00") + " " + item.Letters);
+                StringSorted.Add(item.Number.ToString("000.00") + " " + item.Letters);//getting the string sorted list to compare 
             }
 
             return SortedList;
@@ -381,7 +383,7 @@ namespace PROG7312_POE_ST10117020
             {
                 Dewey d = new Dewey(RandomNumber(), RandomStrings());
                 deweys.Add(d);
-                 StringRandomList.Add(d.Number.ToString("000.00") + " " + d.Letters);
+                StringRandomList.Add(d.Number.ToString("000.00") + " " + d.Letters);
 
             }
 
@@ -438,9 +440,15 @@ namespace PROG7312_POE_ST10117020
         {
             startTime = DateTime.Now;
             dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);//setting the timer to every second 
             
             dispatcherTimer.Start();
+        /*
+        Code Atribution
+        Author:WPF Tutorial
+        Date:Nov 13, 2021
+        URL:https://wpf-tutorial.com/misc/dispatchertimer/
+        */
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -449,7 +457,12 @@ namespace PROG7312_POE_ST10117020
 
             // Forcing the CommandManager to raise the RequerySuggested event
             CommandManager.InvalidateRequerySuggested();
-            // TODO: Attribute
+            /*
+            Code Atribution
+            Author:WPF Tutorial
+            Date:Nov 13, 2021
+            URL:https://wpf-tutorial.com/misc/dispatchertimer/
+            */
         }
 
         private void BtnUp_Click(object sender, RoutedEventArgs e)
@@ -458,11 +471,20 @@ namespace PROG7312_POE_ST10117020
 
             if (selectedIndex > 0)
             {
+                //here i swop the item and the item above
                 var itemToMoveUp = LstDeweys.Items[selectedIndex];
                 StringObvRandomList.RemoveAt(selectedIndex);
                 StringObvRandomList.Insert(selectedIndex - 1, (string)itemToMoveUp);
                 LstDeweys.SelectedIndex = selectedIndex - 1;
             }
+
+
+            /*
+            Code Atribution
+            Author: Peter Hansen
+            Date:Nov 15, 2021
+            URL:https://stackoverflow.com/questions/12540457/moving-an-item-up-and-down-in-a-wpf-list-box
+            */
         }
 
         private void BtnDown_Click(object sender, RoutedEventArgs e)
@@ -470,15 +492,23 @@ namespace PROG7312_POE_ST10117020
             var selectedIndex = LstDeweys.SelectedIndex;
             if (selectedIndex + 1 < StringObvRandomList.Count)
             {
+                //here i swop the item and the item below
                 var itemToMoveDown = LstDeweys.Items[selectedIndex];
                 StringObvRandomList.RemoveAt(selectedIndex);
                 StringObvRandomList.Insert(selectedIndex + 1, (string)itemToMoveDown);
                 LstDeweys.SelectedIndex = selectedIndex + 1;
             }
+        /*
+        Code Atribution
+        Author: Peter Hansen
+        Date:Nov 15, 2021
+        URL:https://stackoverflow.com/questions/12540457/moving-an-item-up-and-down-in-a-wpf-list-box
+        */
         }
 
         private void BtnHome_Click(object sender, RoutedEventArgs e)
         {
+            //navigation to the hub window 
             HubWindow HW = new HubWindow();
             this.Hide();
             HW.Show();

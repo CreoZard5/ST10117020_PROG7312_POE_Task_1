@@ -10,7 +10,6 @@ namespace PROG7312_POE_ST10117020.Utility
 {
     public class LoginMethods
     {
-       // private static readonly PROG_ST10117020Context CONTEXT = new PROG_ST10117020Context();
 
 
         //method to check if the user can log in 
