@@ -1,0 +1,43 @@
+﻿<Window x:Class="PROG7312_POE_ST10117020.HubWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG7312_POE_ST10117020"
+        mc:Ignorable="d"
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+ Title="Grimore Catcher" ResizeMode="NoResize"   WindowStartupLocation="CenterScreen" WindowState="Maximized" FontFamily="Elephant" WindowStyle="SingleBorderWindow"  >
+
+    <Window.Background>
+        <ImageBrush ImageSource="/prog_bg.png"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Label x:Name="LblBgtApp" Content="The Gaming Hub " Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="70"  HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.ColumnSpan="3" />
+        <Button x:Name="BtnLeaderBoard" Content="" Margin="30,30,30,30" Foreground="White" BorderBrush="White" FontFamily="Elephant"  VerticalAlignment="Top" FontSize="30" Grid.Column="2" HorizontalAlignment="Right" Height="100" Width="100" Click="BtnLeaderBoard_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/LeaderBoard.png"/>
+            </Button.Background>
+        </Button>
+
+
+        <GroupBox x:Name="GrpQuestion"  BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="0" >
+            <Button x:Name="BtnReplacingBooks" Margin="0,5,0,0" Content="Replacing Books"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnReplacingBooks_Click"  />
+        </GroupBox>
+
+        <GroupBox x:Name="GrpSubmit" BorderThickness="0" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" >
+            <Button x:Name="BtnIdentifyingAreas" IsEnabled="False" Margin="0,5,0,0" Content="Identifying Books"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30"  />
+        </GroupBox>
+
+
+        <GroupBox x:Name="GrpAnswer" BorderThickness="0" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="2" >
+            <Button x:Name="BtnFindingCallNumbers" IsEnabled="False" Margin="0,5,0,0" Content="FindingCallNumbers"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30"  />
+        </GroupBox>
+    </Grid>
+</Window>
