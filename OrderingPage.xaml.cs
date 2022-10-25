@@ -25,12 +25,9 @@ namespace PROG7312_POE_ST10117020
     public partial class OrderingPage : Window
     {
         public static Random rnd = new Random();// An object call from the random class to use throughout 
-        private List<Dewey> deweys = new List<Dewey>();//A list of Dewey objects
-        private List<string> StringRandomList = new List<string>();//A list of strings that have the same data as above to use for display 
         private ObservableCollection<string> StringObvRandomList = new ObservableCollection<string>();//An Observable list of strings that will be minipulted by the user 
-        private List<string> StringSorted = new List<string>();//A sorted lst of strings that is used for camparison 
-        public DispatcherTimer dispatcherTimer = new DispatcherTimer();//the timer
-        public int Points;
+        private DispatcherTimer dispatcherTimer = new DispatcherTimer();//the timer
+        private int Points;
         private DateTime startTime ;
         private DateTime endTime ;
         private readonly PROG_ST10117020Context CONTEXT = new PROG_ST10117020Context();
@@ -38,10 +35,10 @@ namespace PROG7312_POE_ST10117020
         public OrderingPage()
         {
             InitializeComponent();
-            PopulateArray();
+            ListHandeler.PopulateArray();
             PopulateButtons();
             TimerStart();
-            SortArray(deweys);
+            ListHandeler.SortArray();
             GrpAnswer.Visibility = Visibility.Hidden;
 
         }
@@ -249,6 +246,10 @@ namespace PROG7312_POE_ST10117020
                 BtnCode10.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#2E003E");
             }
         }
+        // TODO: validation 
+        // TODO: Do new timer 
+        // TODO: Randomize list 
+
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
         {
             dispatcherTimer.Stop();
@@ -258,7 +259,7 @@ namespace PROG7312_POE_ST10117020
             //double timeInMinutes = timeMultiplier / 60;
             // TODO: FIX and test 
             if (timeMultiplier/60 <= 1 )
-            {
+            {// addding to list 
                 LblPoints.Content = (Points * 10).ToString() + "/100";
                 LeaderboardItem L = new LeaderboardItem(ValidationHandeler.GetLeaderBoardID(), "Ordering", (Points * 10), CurrentUser.U.UserId);
                 CONTEXT.LeaderboardItems.Add(L);
@@ -333,64 +334,19 @@ namespace PROG7312_POE_ST10117020
             GrpAnswer.Visibility = Visibility.Visible;
 
         }
-        private double RandomNumber()
-        {
-            //Calling the random class the 3 digits before the point 
-            double rand = rnd.Next(0, 1000);
-            //Calling the random class the 2 digits after the point 
-            double rand2 = rnd.Next(0, 100);
-            //adding the number to form a complete double 
-            double randomNumber = rand + (rand2 / 100);
 
-            return randomNumber;
-        }
-        public static string RandomStrings()
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            return new string(Enumerable.Repeat(chars, 3)
-                .Select(s => s[rnd.Next(s.Length)]).ToArray());
-
-            /*
-             Code Atribution
-            Author:dtb , Wai Ha Lee
-            Date:Nov 13, 2021
-            URL:https://stackoverflow.com/questions/1344221/how-can-i-generate-random-alphanumeric-strings
-            */
-        }
-        public List<Dewey> SortArray(List<Dewey> list)
-        {
-            List<Dewey> SortedList = list.OrderBy(o => o.Letters).OrderBy(o => o.Number).ToList();//sorting the Lists 
-            StringSorted.Clear();
-            foreach (Dewey item in SortedList)
-            {
-                StringSorted.Add(item.Number.ToString("000.00") + " " + item.Letters);//getting the string sorted list to compare 
-            }
-
-            return SortedList;
-        }
         public void DisplayCorrectList()
         {
             LstAnswer.Items.Clear();
-            foreach (string item in StringSorted)
+            foreach (string item in ListHandeler.StringSorted1)
             {
                 LstAnswer.Items.Add(item);
             }
         }
-        public void PopulateArray()
-        {
-            deweys.Clear();
-            for (int i = 0; i < 10; i++)
-            {
-                Dewey d = new Dewey(RandomNumber(), RandomStrings());
-                deweys.Add(d);
-                StringRandomList.Add(d.Number.ToString("000.00") + " " + d.Letters);
 
-            }
-
-        }
         public void PopulateButtons()
         {
-
+            List<string> StringRandomList = ListHandeler.StringRandomList1 ;
             BtnCode1.Content = StringRandomList.ElementAt(0);
             BtnCode2.Content = StringRandomList.ElementAt(1);
             BtnCode3.Content = StringRandomList.ElementAt(2);
@@ -414,7 +370,7 @@ namespace PROG7312_POE_ST10117020
             {
                 for (int i = 0; i < 10; i++)
                 {
-                    if (LstDeweys.Items.GetItemAt(i).Equals(StringSorted.ElementAt(i)))
+                    if (LstDeweys.Items.GetItemAt(i).Equals(ListHandeler.StringSorted1.ElementAt(i)))
                     {
                         Points++;
                     }
@@ -512,6 +468,13 @@ namespace PROG7312_POE_ST10117020
             HubWindow HW = new HubWindow();
             this.Hide();
             HW.Show();
+        }
+
+        private void BtnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("To play :,\n" +
+                            "you will click the buttons on the left of the screen in the order you see fit \n" +
+                            "then if you need adjustments you can click the call number you want to use and move it up or down","Grimoire Catcher" );
         }
     }
 

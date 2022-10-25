@@ -41,7 +41,7 @@ namespace PROG7312_POE_ST10117020
             userEmail = TxbName.Text;
             userPassword = TxbPassword.Password;
 
-            if (LoginMethods.CanLogIn(userEmail, userPassword) == true)//checks if the User can log in 
+            if (LoginMethods.CanLogIn(userEmail, userPassword) == true )//checks if the User can log in 
             {
                 HubWindow HW = new HubWindow();
                 this.Hide();
@@ -49,9 +49,12 @@ namespace PROG7312_POE_ST10117020
             }
             else
             {
-                MessageBox.Show("Please enter valid Details to continue \n\n or register ;)");
+                MessageBox.Show("Please enter valid Details to continue \n\n or register ;)", "Grimoire Catcher");
             }
 
+            //MatchingColumsWindow matchingColums = new MatchingColumsWindow();
+            //this.Hide();
+            //matchingColums.Show();
 
         }
 
@@ -71,22 +74,20 @@ namespace PROG7312_POE_ST10117020
 
         private void BtnRegister_Click(object sender, RoutedEventArgs e)
         {
-            //creating variables
-            string UserName, UserEmail, UserPassword;
-
-            //populating variables 
-            UserName = TxbRegName.Text;
-            UserEmail = TxbRegEmail.Text;
-            UserPassword = TxbRegPassword.Text;
-
-
-
-            //checking and getting error message if aplicable 
-            string ValidationStr = ValidationHandeler.CheckUser(UserName, UserEmail, UserPassword);
-
             try
             {
-                if (ValidationStr.Length == 0)
+                //creating variables
+                string UserName, UserEmail, UserPassword;
+
+                //populating variables 
+                UserName = TxbRegName.Text;
+                UserEmail = TxbRegEmail.Text;
+                UserPassword = TxbRegPassword.Text;
+
+                //checking and getting error message if aplicable 
+                string ValidationStr = ValidationHandeler.CheckUser(UserName, UserEmail, UserPassword);
+
+                if (ValidationStr.Length <= 0)
                 {
                     string temp = LoginMethods.PassWordHash(UserPassword);
                     //creating an instance of student 
@@ -103,13 +104,13 @@ namespace PROG7312_POE_ST10117020
                 }
                 else
                 {
-                    MessageBox.Show("User already exists ");
+                    MessageBox.Show(ValidationStr);
                 }
 
             }
             catch (Exception)
             {
-                MessageBox.Show( "User already exists ");
+                MessageBox.Show( "User already exists ", "Grimoire Catcher");
 
                 throw;
             }

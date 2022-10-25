@@ -15,7 +15,15 @@ namespace PROG7312_POE_ST10117020.Utility
 
         public static Regex UsableYears = new Regex("^20[1-9] [0-9]$");//regex for proper years 
 
-       // public static Regex EmailCheck = new Regex("^[^@\s]+@[^@\s]+\.(com|net|org|gov)$")
+        /* check if password contains atleast :
+         * 8 characters length 
+         * 2 letters in Upper Case 
+         * 1 Special Character(!@#$&*) 
+         * 2 numerals (0-9) 
+         * 3 letters in Lower Case*/
+
+        public static Regex PasswordCheck = new Regex("^(?=(.*[a-z]){3,})(?=(.*[A-Z]){2,})(?=(.*[0-9]){2,})(?=(.*[!@#$%/^&*()-__+.]){1,}).{8,}$");
+
 
 
     }

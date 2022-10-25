@@ -40,5 +40,12 @@ namespace PROG7312_POE_ST10117020
             this.Hide();
             LW.Show();
         }
+
+        private void BtnIdentifyingAreas_Click(object sender, RoutedEventArgs e)
+        {
+            MatchingColumsWindow MCW = new MatchingColumsWindow();
+            this.Hide();
+            MCW.Show();
+        }
     }
 }

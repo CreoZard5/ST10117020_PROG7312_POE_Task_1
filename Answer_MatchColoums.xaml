@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="PROG7312_POE_ST10117020.Answer_MatchColoums"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PROG7312_POE_ST10117020"
+             mc:Ignorable="d" 
+             Height="130" Width="130" VerticalAlignment="Center" HorizontalAlignment="Center">
+    <Border>
+        <Grid>
+            <TextBlock Text="{Binding Text}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextAlignment="Center" TextWrapping="Wrap" FontSize="15"  Background="#2E003E" Foreground="White" Padding="10" Margin="10" />
+        </Grid>
+    </Border>
+</UserControl>

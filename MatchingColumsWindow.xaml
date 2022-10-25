@@ -1,0 +1,83 @@
+﻿<Window x:Class="PROG7312_POE_ST10117020.MatchingColumsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROG7312_POE_ST10117020"
+        mc:Ignorable="d"
+        Width="{x:Static SystemParameters.PrimaryScreenWidth}"
+        Height="{x:Static SystemParameters.PrimaryScreenHeight}"
+        Title="Grimore Catcher" ResizeMode="NoResize"   WindowStartupLocation="CenterScreen" WindowState="Maximized" FontFamily="Elephant" WindowStyle="SingleBorderWindow"  >
+    <Window.Background>
+        <ImageBrush ImageSource="/prog_bg.png"/>
+    </Window.Background>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <Label x:Name="lblTimer" Content="00:00:00 " Margin="0,0,0,0" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="4" Grid.Row="0"/>
+        <Button x:Name="BtnHome" Margin="0,5,0,0" Content="Home"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnHome_Click"  />
+        <Button x:Name="BtnInfo" Margin="0,10,0,0" Content="Info"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Top" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Grid.RowSpan="2" Grid.Row="1" Click="BtnInfo_Click"  />
+
+
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Label Content="Questions"   Grid.Column="0" Margin="0,50,0,50" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  />
+            <Border x:Name="BrdQuestion"  AllowDrop="False" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="0" >
+                <WrapPanel  Name="WpnlQuestion"  Drop="WpnlQuestion_Drop" Grid.Column="0" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="50,0,50,0" Background="#4CFFFFFF" Orientation="Vertical" >
+
+                </WrapPanel>
+            </Border>
+        </StackPanel >
+
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Label Content="place answers here :"  Grid.Column="1" Margin="0,50,0,50" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  />
+
+            <Border x:Name="BrduserAns"  BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" >
+
+                <WrapPanel  Name="WpnlUAnswer" AllowDrop="True" Drop="WpnlUAnswer_Drop" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,50,0" Background="#4CFFFFFF" Orientation="Vertical"  MinHeight="200">
+
+                </WrapPanel>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="2" Grid.Column="2" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Label Content="Possible Answers"  Grid.Column="2" Margin="0,50,0,50" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  />
+
+            <Border x:Name="BrdAnswers"  BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="2" >
+                <WrapPanel  Name="WpnlAnswers" AllowDrop="True" Drop="WpnlAnswers_Drop" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="50,0,50,0" Background="#4CFFFFFF" Orientation="Vertical">
+
+                </WrapPanel>
+            </Border>
+        </StackPanel>
+
+
+        <GroupBox Grid.Column="3" Grid.Row="2" Margin="0,10,10,200">
+            <StackPanel Orientation="Vertical">
+                <RadioButton x:Name="RbnModeDesc" Content="Match Descriptions with Codes" Margin="0,50,0,50" Background="White" Foreground="#2E003E" FontFamily="Elephant" FontSize="20"  HorizontalAlignment="Center" Checked="RbnModeDesc_Checked" IsChecked="False" GroupName="GrpMode"/>
+                <RadioButton x:Name="RbnModeCode" Content="Match Codes with Descriptions " Margin="0,50,0,50" Background="White" Foreground="#2E003E" FontFamily="Elephant" FontSize="20"  HorizontalAlignment="Center"  IsChecked="False" Checked="RbnModeCode_Checked" GroupName="GrpMode"/>
+
+                <Button x:Name="BtnCode1" Margin="0,5,0,0" Content="Submit"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnCode1_Click"  />
+
+                <Label Content="Awesome Your Score is : " Margin="0,50,0,0" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  Grid.Column="0"/>
+                <Label x:Name="LblPoints" Content="???/100" Margin="0,5,0,0" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  Grid.Column="0"/>
+
+            </StackPanel>
+
+        </GroupBox>
+
+
+
+
+    </Grid>
+</Window>

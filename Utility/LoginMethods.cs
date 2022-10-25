@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using PROG7312_POE_ST10117020.ModelServer;
+using System.Net.Mail;
 
 namespace PROG7312_POE_ST10117020.Utility
 {
@@ -51,5 +52,6 @@ namespace PROG7312_POE_ST10117020.Utility
             }
 
         }
+
     }
 }

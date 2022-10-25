@@ -1,0 +1,48 @@
+Create database PROG_ST10117020; 
+use PROG_ST10117020;
+
+Create Table Users
+(
+UserID varchar(5) not null Primary key,
+UserUsername varchar(20)not null,
+UserEmail varchar(50)not null,
+UserPassword varchar(100)not null
+);
+
+Create Table LeaderboardItems
+(
+LeaderboardID varchar(5) not null Primary key,
+LeaderboardGameType varchar(50)not null,
+LeaderboardScore int not null,
+UserID varchar(5) not null,
+FOREIGN KEY (UserID) references Users(UserID)
+);
+
+ insert into Users (UserID,UserUsername,UserEmail,UserPassword)
+ VALUES 
+  ('U01','Admin','Admin@gmail.com','1be9877831148a4c03331057e3acb6af88e3ea312a6e470c8ab1d6779f2df8c7'), 
+  ('U02','CreoZard5','creolingopal5@gmail.com','3513d9452af7c1768eeba7e47bdd0920aeb18360dc15a1a7759fc0f0e4f3ca02'),
+  ('U03','SupaSayen','sn7@gmail.com','e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'),
+  ('U04','DJ Uitveer','np8@gmail.com','1b56e72e957c16786a0c736d4a17c41f37c61e53b5e6f0a007414828ac7d311d'),
+  ('U05','Reaper69','mak4@gmail.com','5f4f045d317c6bb4cce5e8c489dc0e6d8a31522ec0eaff5310d58c74033e7966'),
+  ('U06','Sherlock Holmes','nal1@gmail.com','fa76d99ad957d952fb3738ae1ed7282a18d3bca1531c7efc273d52e16b774bd6'),
+  ('U07','Swifty','ma9@gmail.com','e6f07d43b5c21db0fbb9a31feac2dc599787763393dd5acbfad80e247eb02ad5'),
+  ('U08','KingKumz','kv10@gmail.com','8326e09ce4e90a419a510ed74895cf6713f2fb42b0b3ffc126527ec2b9e95872'),
+  ('U09','Gods Kin','kp6@gmail.com','dc9f28b12dd1818ee42ffc92ecb940386214598837348d30d3c6c0b7b57e34c9'),
+  ('U10','KeensterJnr','kp12@gmail.com','c886ff11f6a51b611a867475e31b1e8d22a8c1eb99cec8a57c83a32164f083e0');
+
+ insert into LeaderboardItems (LeaderboardID,LeaderboardGameType,LeaderboardScore,UserID)
+ VALUES 
+ ('L01','Ordering',100,'U01'),
+ ('L02','Ordering',46,'U02'),
+ ('L03','Ordering',76,'U03'),
+ ('L04','Ordering',32,'U04'),
+ ('L05','Ordering',15,'U05'),
+ ('L06','Ordering',78,'U06'),
+ ('L07','Ordering',45,'U07'),
+ ('L08','Ordering',98,'U08'),
+ ('L09','Ordering',23,'U09'),
+ ('L10','Ordering',96,'U10');
+
+select * from Users;
+select * from LeaderboardItems;
