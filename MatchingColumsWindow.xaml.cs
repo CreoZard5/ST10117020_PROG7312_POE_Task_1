@@ -34,7 +34,8 @@ namespace PROG7312_POE_ST10117020
         // An object call from the random class to use throughout 
         public static Random rnd = new Random();
 
-
+        // Codes or description 
+        public static bool isCodes, isDescription;
 
         //A variable to store the users points for the current game 
         public int points;
@@ -50,6 +51,11 @@ namespace PROG7312_POE_ST10117020
             InitializeComponent();
             WpnlQuestion.IsEnabled = false;
             ListHandeler.PopDictionary();
+            ListHandeler.GameRefreshCodes();
+            isCodes = false;
+            isDescription = true;
+            TimerStart();
+            PopulateGame();
 
         }
 
@@ -184,7 +190,7 @@ namespace PROG7312_POE_ST10117020
             string value;
             string key;
 
-            if (RbnModeCode.IsChecked == true)
+            if (isCodes)
             {
                 if (WpnlUAnswer.Children.Count == 4)
                 {
@@ -211,7 +217,7 @@ namespace PROG7312_POE_ST10117020
                     MessageBox.Show("Please complete game before submitting answers");
                 }
             }
-            else
+            else if (isDescription)
             {
                 if (WpnlUAnswer.Children.Count == 4)
                 {
@@ -242,9 +248,37 @@ namespace PROG7312_POE_ST10117020
             
         }
 
-        private void BtnCode1_Click(object sender, RoutedEventArgs e)
+        public void TimerStart()
         {
-           
+            startTime = DateTime.Now;
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);//setting the timer to every second 
+
+            dispatcherTimer.Start();
+            /*
+            Code Atribution
+            Author:WPF Tutorial
+            Date:Nov 13, 2021
+            URL:https://wpf-tutorial.com/misc/dispatchertimer/
+            */
+        }
+
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            //navigation to the hub window 
+            HubWindow HW = new HubWindow();
+            this.Hide();
+            HW.Show();
+        }
+
+        private void BtnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("To play you will drag from your possible answers to the 'place answers here' \n" +
+                            "then click submit to proceed and get you score ","Grimoire Catcher");
+        }
+
+        private void BtnSubmit_Click(object sender, RoutedEventArgs e)
+        {
             dispatcherTimer.Stop();
             endTime = DateTime.Now;
             GetScore();
@@ -284,51 +318,25 @@ namespace PROG7312_POE_ST10117020
 
             }
 
-        }
+            int chooseCodeOrGame = RandomHandeler.rnd.Next(100);
+            if (chooseCodeOrGame > 50)
+            {
+                ListHandeler.GameRefreshCodes();
+                isCodes = false;
+                isDescription = true;
+                PopulateGame();
+                TimerStart();
+            }
+            else
+            {
+                ListHandeler.GameRefreshDesc();
+                isCodes = true;
+                isDescription = false;
+                PopulateGame();
+                TimerStart();
+            }
 
 
-        private void RbnModeDesc_Checked(object sender, RoutedEventArgs e)
-        {
-            ListHandeler.GameRefreshCodes();
-            PopulateGame();
-            TimerStart();
-        }
-
-        private void RbnModeCode_Checked(object sender, RoutedEventArgs e)
-        {
-            ListHandeler.GameRefreshDesc();
-            PopulateGame();
-            TimerStart();
-        }
-
-        public void TimerStart()
-        {
-            startTime = DateTime.Now;
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);//setting the timer to every second 
-
-            dispatcherTimer.Start();
-            /*
-            Code Atribution
-            Author:WPF Tutorial
-            Date:Nov 13, 2021
-            URL:https://wpf-tutorial.com/misc/dispatchertimer/
-            */
-        }
-
-        private void BtnHome_Click(object sender, RoutedEventArgs e)
-        {
-            //navigation to the hub window 
-            HubWindow HW = new HubWindow();
-            this.Hide();
-            HW.Show();
-        }
-
-        private void BtnInfo_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("To play first select a mode i.e matching numbers to descriptions or descriptions to numbers,\n" +
-                            "then you will drag from your possible answers to the 'place answers here' \n" +
-                            "then click submit to proceed and get you score ","Grimoire Catcher");
         }
     }
 }

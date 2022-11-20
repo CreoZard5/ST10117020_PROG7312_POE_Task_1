@@ -34,15 +34,15 @@ FOREIGN KEY (UserID) references Users(UserID)
  insert into LeaderboardItems (LeaderboardID,LeaderboardGameType,LeaderboardScore,UserID)
  VALUES 
  ('L01','Ordering',100,'U01'),
- ('L02','Ordering',46,'U02'),
+ ('L02','FindCallNumber',46,'U02'),
  ('L03','Ordering',76,'U03'),
  ('L04','Ordering',32,'U04'),
- ('L05','Ordering',15,'U05'),
+ ('L05','Matching',100,'U05'),
  ('L06','Ordering',78,'U06'),
  ('L07','Ordering',45,'U07'),
- ('L08','Ordering',98,'U08'),
+ ('L08','Matching',98,'U08'),
  ('L09','Ordering',23,'U09'),
- ('L10','Ordering',96,'U10');
+ ('L10','FindCallNumber',96,'U10');
 
 select * from Users;
 select * from LeaderboardItems;

@@ -18,8 +18,23 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Button x:Name="BtnInfo" Grid.Row="0"  Grid.Column="0" FontFamily="Elephant" Height="70" VerticalAlignment="Top" HorizontalAlignment="Left" Width="360"  FontSize="30" Click="BtnInfo_Click" >
+            <Button.Background>
+                <ImageBrush ImageSource="/btn_info.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="BtnHome" Grid.Row= "0" Grid.Column="3" FontFamily="Elephant" Height="70" VerticalAlignment="Top" HorizontalAlignment="Right" Width="360" FontSize="30" Click="BtnHome_Click"  >
+            <Button.Background>
+                <ImageBrush ImageSource="/btn_home.png"/>
+            </Button.Background>
+        </Button>
 
-        <GroupBox x:Name="GrpQuestion"  BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="0" >
+        <GroupBox x:Name="GrpQuestion" Grid.Row="1" BorderThickness="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="0" >
 
             <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                 <Label Content="Click the buttons to arrange the codes!" Margin="0,50,0,0" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  Grid.Column="0"/>
@@ -35,12 +50,11 @@
                 <Button x:Name="BtnCode8" Margin="0,5,0,0" Content="|||.|| $$$"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnCode8_Click" />
                 <Button x:Name="BtnCode9" Margin="0,5,0,0" Content="|||.|| $$$"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnCode9_Click" />
                 <Button x:Name="BtnCode10" Margin="0,5,0,0" Content="|||.|| $$$"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnCode10_Click" />
-                <Button x:Name="BtnInfo" Margin="10,20,10,10" Content="Info"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnInfo_Click" />
 
             </StackPanel>
         </GroupBox>
 
-        <GroupBox x:Name="GrpSubmit" BorderThickness="0" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" >
+        <GroupBox x:Name="GrpSubmit" Grid.Row="1" BorderThickness="0" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="1" >
 
             <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                 <Label x:Name="lblTimer" Content="00:00:00 " Margin="0,80,0,0" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  Grid.Column="0"/>
@@ -48,7 +62,6 @@
                 <Button x:Name="BtnUp" Margin="0,5,0,0" Content="Move Up"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnUp_Click" />
                 <Button x:Name="BtnDown" Margin="0,5,0,0" Content="Move Down"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnDown_Click" />
                 <Button x:Name="BtnEnter" Margin="0,5,0,0" Content="Submit Answer"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnEnter_Click" />
-                <Button x:Name="BtnHome" Margin="0,5,0,0" Content="Home"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnHome_Click"  />
 
             </StackPanel>
 
@@ -56,7 +69,7 @@
         </GroupBox>
 
 
-        <GroupBox x:Name="GrpAnswer" BorderThickness="0" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="2" >
+        <GroupBox x:Name="GrpAnswer" Grid.Row="1"  BorderThickness="0" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="2" >
 
             <StackPanel Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
                 <Label Content="Awesome Your Score is : " Margin="0,50,0,0" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  Grid.Column="0"/>

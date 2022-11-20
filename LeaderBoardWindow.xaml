@@ -25,12 +25,18 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="LblBgtApp" Content="Leaderboard" Background="{x:Null}" Foreground="#2E003E" FontFamily="Elephant" FontSize="70"  HorizontalAlignment="Center"  VerticalAlignment="Top" Grid.Row="0" Grid.ColumnSpan="4" />
-        <Button x:Name="BtnHome"  Content="Home"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Top" HorizontalAlignment="Right" Width="366"  Background="#2E003E" FontSize="30" Click="BtnHome_Click"  />
+        <Button x:Name="BtnHome" Height="70" VerticalAlignment="Top" HorizontalAlignment="Right" Width="360" FontSize="30" Grid.Column="3" Grid.Row="0" Click="BtnHome_Click"  >
+            <Button.Background>
+                <ImageBrush ImageSource="/btn_home.png"/>
+            </Button.Background>            
+        </Button>
+
+        <Button x:Name="BtnMyEntries" Height="70" VerticalAlignment="Top" HorizontalAlignment="Left" Width="360" FontSize="30" Grid.Column="0" Grid.Row="0" Click="BtnMyEntries_Click" />
         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="4" HorizontalAlignment="Stretch">
             <RadioButton x:Name="RbnModeOrder" Grid.Column="0" Content="Leaderboard for Ordering"  Margin="10,0,10,0"  Background="White" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  IsChecked="False" GroupName="GrpMode" Checked="RbnModeOrder_Checked"/>
                 <RadioButton x:Name="RbnModeMatching" Grid.Column="1" Content="Leaderboard for Matching" Margin="10,0,10,0"  Background="White" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  IsChecked="False" GroupName="GrpMode" Checked="RbnModeMatching_Checked"/>
             <RadioButton x:Name="RbnModeAll" Grid.Column="2" Content="Leaderboard for Everything" Margin="10,0,10,0"  Background="White" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  IsChecked="False" GroupName="GrpMode" Checked="RbnModeAll_Checked"/>
-            <RadioButton x:Name="RbnModeQuiz" Grid.Column="3" Content="Leaderboard for Quiz" Margin="10,0,10,0"  Background="White" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  IsChecked="False" GroupName="GrpMode" Checked="RbnModeQuiz_Checked"/>
+            <RadioButton x:Name="RbnModeQuiz" Grid.Column="3" Content="Leaderboard for Finding Call Numbers" Margin="10,0,10,0"  Background="White" Foreground="#2E003E" FontFamily="Elephant" FontSize="30"  HorizontalAlignment="Center"  IsChecked="False" GroupName="GrpMode" Checked="RbnModeQuiz_Checked"/>
         </StackPanel>
         <ListBox x:Name="LstAnswer" Grid.Row="2" Foreground="#2E003E" FontFamily="Elephant" FontSize="35" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" BorderBrush="White" BorderThickness="3"  Background="#4CFFFFFF" HorizontalContentAlignment="Left" Grid.ColumnSpan="4"/>
 

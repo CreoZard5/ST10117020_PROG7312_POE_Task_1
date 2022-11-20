@@ -37,7 +37,7 @@
 
 
         <GroupBox x:Name="GrpAnswer" BorderThickness="0" BorderBrush="{x:Null}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Grid.Column="2" >
-            <Button x:Name="BtnFindingCallNumbers" IsEnabled="False" Margin="0,5,0,0" Content="FindingCallNumbers"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30"  />
+            <Button x:Name="BtnFindingCallNumbers" IsEnabled="True" Margin="0,5,0,0" Content="FindingCallNumbers"  Foreground="White" BorderBrush="White" FontFamily="Elephant" Height="71" VerticalAlignment="Center" HorizontalAlignment="Center" Width="366"  Background="#2E003E" FontSize="30" Click="BtnFindingCallNumbers_Click"  />
         </GroupBox>
     </Grid>
 </Window>

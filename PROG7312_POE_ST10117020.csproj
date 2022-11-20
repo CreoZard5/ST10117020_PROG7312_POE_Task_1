@@ -8,12 +8,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="btn_home.png" />
+    <None Remove="btn_info.png" />
     <None Remove="LeaderBoard.png" />
+    <None Remove="myEntries.png" />
+    <None Remove="my_entries.png" />
     <None Remove="prog_bg.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="btn_home.png" />
+    <Resource Include="btn_info.png" />
     <Resource Include="LeaderBoard.png" />
+    <Resource Include="myEntries.png" />
+    <Resource Include="my_entries.png" />
     <Resource Include="prog_bg.png" />
   </ItemGroup>
 
@@ -44,6 +52,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
 </Project>

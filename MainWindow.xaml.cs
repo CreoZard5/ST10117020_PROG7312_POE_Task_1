@@ -41,7 +41,7 @@ namespace PROG7312_POE_ST10117020
             userEmail = TxbName.Text;
             userPassword = TxbPassword.Password;
 
-            if (LoginMethods.CanLogIn(userEmail, userPassword) == true )//checks if the User can log in 
+            if (LoginMethods.CanLogIn(userEmail, userPassword) == true)//checks if the User can log in 
             {
                 HubWindow HW = new HubWindow();
                 this.Hide();
@@ -52,9 +52,7 @@ namespace PROG7312_POE_ST10117020
                 MessageBox.Show("Please enter valid Details to continue \n\n or register ;)", "Grimoire Catcher");
             }
 
-            //MatchingColumsWindow matchingColums = new MatchingColumsWindow();
-            //this.Hide();
-            //matchingColums.Show();
+
 
         }
 

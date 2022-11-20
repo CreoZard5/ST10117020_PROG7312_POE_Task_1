@@ -47,5 +47,12 @@ namespace PROG7312_POE_ST10117020
             this.Hide();
             MCW.Show();
         }
+
+        private void BtnFindingCallNumbers_Click(object sender, RoutedEventArgs e)
+        {
+            FindingCallNumbers FCN = new FindingCallNumbers();
+            this.Hide();
+            FCN.Show();
+        }
     }
 }
